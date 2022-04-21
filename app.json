@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "GEOSPATIAL WORLD",
+    "slug": "GMCEvent",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Golu.png",
+    "splash": {
+      "image": "./assets/appSplash.png",
+      "backgroundColor": "#d9d9d9",
+      "resizeMode":"cover"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tuespotsolutions.gmcevent"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/firstSplash.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.tuespotsolutions.gmcevent"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
