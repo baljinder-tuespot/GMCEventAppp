@@ -11,15 +11,15 @@ const HEIGHT = Dimensions.get('window').height;
 const CarouselItem = ({ item }) => {
 
 
-    console.log("line 10 "+item.imgUrl);
-
     return (
-        <View style={styles.wrap}>
-            <Image style={styles.wrap} resizeMode='stretch' source={{ uri: item.imgUrl }} />
-            {/* <View style={styles.textView}>
-                <Text style={styles.itemTitle}> {item.title}</Text>
-                <Text style={styles.itemDescription}>{item.description}</Text>
-            </View> */}
+        <View style={styles.borderBottom}>
+            <View style={styles.wrap}>
+                <Image style={styles.wrap} resizeMode='stretch' source={{ uri: item.imgUrl }} />
+                {/* <View style={styles.textView}>
+                    <Text style={styles.itemTitle}> {item.title}</Text>
+                    <Text style={styles.itemDescription}>{item.description}</Text>
+                </View> */}
+            </View>
         </View>
     )
 }
@@ -39,10 +39,16 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
+    bottomBorder : { borderBottomWidth:1, borderColor:"#ccc" },
+
     wrap: {
         width: WIDTH,
-        height: HEIGHT * 0.15,
-        marginBottom: 1
+        height: HEIGHT * 0.10,
+    },
+
+    borderBottom:{
+        borderBottomWidth:1,
+         borderColor:"#000"
     },
 
     textView: {

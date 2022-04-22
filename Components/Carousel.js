@@ -69,10 +69,13 @@ const Carousel = ({ data }) => {
                             extrapolate: 'clamp'
                         })
                         return (
-                            <Animated.View
-                                key={i}
-                                style={{ opacity, height: 10, width: 10, backgroundColor: '#595959', margin: 8, borderRadius: 5 }}
-                            />
+                            <View>
+                                <Text></Text>
+                            </View>
+                            // <Animated.View
+                            //     key={i}
+                            //     style={{ opacity, height: 10, width: 10, backgroundColor: '#595959', margin: 8, borderRadius: 5 }}
+                            // />
                         )
                     })}
 

@@ -17,20 +17,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Schedule = ({route,navigation}) =>{
 
-
-    //console.log("Schedule line no 17 "+JSON.stringify(route) );
-
-    //console.log("Schedule line no 19 "+route.params.id);
-
-    
-
-
-
    const eventId = route.params.id;
-
-   // console.log("event id on Schedule page "+eventId);
-    //const [selectedValue, setSelectedValue] = useState("Ram");
     const data = schedule;
+
+
+   
 
 
     const [list, setList] = useState([]);
@@ -40,7 +31,7 @@ const Schedule = ({route,navigation}) =>{
         console.log(sessionDetailLocalId+eventId);
     axios.get(sessionDetailLocalId+eventId).then(
     (respone) => {
-   //GET /session/getSessionByEventId/{id}
+
    
    console.warn(respone.data);
     setList(respone.data);
@@ -53,36 +44,43 @@ const Schedule = ({route,navigation}) =>{
 
 
 
-    // const fetchDate = () =>{
-    //     axios.get("http://api.pcstart.in/session/getSessionByEventIdDates/1").then(
-    //         (response)=>{
-    //             setDate(response.data)
-    //         },
-    //         (error)=>{
-    //             console.log("line 54 "+error);
-    //         }
-    //     )
-    // }
-
 
     useEffect(() => {
-    fetchData();
-    },[]);
+        fetchData();
+    },[]);   
 
+    
 
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+          console.log('Refreshed!');
+          
+        });
+        return unsubscribe;
+      }, [navigation]);
+
+    
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
     },[])
     const handleBackButtonClick = () => {
+        console.log("backButton working Schedule Screen")
         navigation.navigate('EventDetails1',{
             id:eventId
          })
+
+        //navigation.goBack();
         return true;
     }
 
+
+    
+
 const navigateMethod = async (sessionId, webLink) => {
 
-    if(webLink != ""){
+    console.log("webLink Line 85 "+webLink);
+
+    if(webLink){
 
         console.log(webLink);
         console.log("method ")
@@ -313,6 +311,8 @@ const navigateMethod = async (sessionId, webLink) => {
         }
 
     
+        
+
 
   
     return (

@@ -43,8 +43,8 @@ const EventDetails = ({ route, navigation }) => {
           AsyncStorage.getItem("guestLogin").then(
             (value)=>{
               if(value){
-                  console.log(guestStorage);
-                  console.log("guestStorage");
+               //   console.log(guestStorage);
+                 // console.log("guestStorage");
                 setGuestStorage(value);
               }
             },
@@ -64,17 +64,26 @@ const EventDetails = ({ route, navigation }) => {
       },[])
 
 
+      useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+          console.log('Refreshed!');
+          localStorageGet()
+
+        });
 
       useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-    },[])
-    const handleBackButtonClick = () => {
-        navigation.navigate('Home',{
-            id:eventId
-         })
-        return true;
-    }
+        },[])
+        const handleBackButtonClick = () => {
+            console.log("backButton working")
+            navigation.navigate('Home')
+            return true;
+        }
 
+  
+        
+        return unsubscribe;
+      }, [navigation]);
 
 
 
@@ -86,12 +95,6 @@ const EventDetails = ({ route, navigation }) => {
     //   }, [navigation]);
 
     const eventId = route.params.id
-
-    console.log("event id on Event Details page " + eventId);
-
-   
-
-    
       
 
     const onChange = (nativeEvent) => {

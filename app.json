@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/firstSplash.png",
+        "foregroundImage": "./assets/Golu.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.tuespotsolutions.gmcevent"

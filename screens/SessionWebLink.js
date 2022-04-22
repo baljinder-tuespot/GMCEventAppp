@@ -19,33 +19,15 @@ const SessionWebLink = ({route,navigation}) => {
    
 
     const [webUrl, setWebUrl] = useState();
-
-
-    useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-    },[])
-    const handleBackButtonClick = () => {
-        navigation.navigate('Schedule',{
-            id:eventId
-         })
-        return true;
-    }
-
    
-     // console.log("line 25 "+eventId+" "+sessionId)
-   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      console.log('Refreshed!');
-      getData();
-    });
-    return unsubscribe;
-  }, [navigation]);
+   
+  
   let session
    const getData = () => {
     try {
         AsyncStorage.getItem("webLink").then(
           (value)=>{
-            console.log("value"+value);
+            //console.log("value"+value);
             setWebUrl(value)
            
            /*  if(value){
@@ -65,13 +47,27 @@ const SessionWebLink = ({route,navigation}) => {
    }
 
 
-   useEffect(() => {
-    getData();
-},[]);
+//    useEffect(() => {
+//     getData();
+// },[]);
 
 
 
-    console.log("webLink16 "+webUrl);
+
+useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+},[])
+const handleBackButtonClick = () => {
+    console.log("backButton working")
+    navigation.navigate('Schedule',{
+        id:eventId
+     })
+    return true;
+}
+
+
+
+    
 
     return (
             <View style={styles.container}>
